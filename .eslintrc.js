@@ -21,6 +21,7 @@ module.exports = {
 	plugins: ['react', 'prettier'],
 	rules: {
 		'prettier/prettier': ['error', {}, { usePrettierrc: true }],
+		'no-console': ['warn', { allow: ['warn', 'error'] }],
 		'no-unused-vars': [
 			'warn',
 			{
@@ -40,6 +41,7 @@ module.exports = {
 				reservedFirst: true,
 			},
 		],
+		'react/prop-types': ['off'],
 		'padding-line-between-statements': [
 			'error',
 			{ blankLine: 'always', prev: '*', next: 'return' },
