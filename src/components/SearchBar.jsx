@@ -1,43 +1,50 @@
-import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useFormik } from 'formik';
+import { Form, InputGroup, Button } from 'react-bootstrap';
 
 const Search = ({ setSearchResult, setSearchError }) => {
-	const [searchInputValue, setSearchInputValue] = useState('');
+	const formik = useFormik({
+		initialValues: {
+			search: '',
+		},
+		onSubmit: (value) => handleSearch(value.search),
+	});
 
-	useEffect(() => {
-		const handleSearch = async () => {
-			const trimedInput = searchInputValue.trim();
+	const handleSearch = async (input) => {
+		const trimmedInput = input.trim();
+		const request = axios.get(
+			`https://superheroapi.com/api/${import.meta.env.VITE_ACCESS_TOKEN}/search/${trimmedInput}`,
+		);
+		const response = await request;
 
-			if (trimedInput.length > 0) {
-				const request = axios.get(
-					`https://superheroapi.com/api/${import.meta.env.VITE_ACCESS_TOKEN}/search/${trimedInput}`,
-				);
-				const response = await request;
-
-				if (response.data.response === 'success') {
-					setSearchResult(response.data.results);
-					setSearchError('');
-				} else if (response.data.response === 'error') {
-					setSearchResult([]);
-					setSearchError(response.data.error);
-				}
-			} else {
-				setSearchError('');
-				setSearchResult([]);
-			}
-		};
-
-		const timeOutId = setTimeout(() => handleSearch(), 500);
-
-		return () => {
-			clearTimeout(timeOutId);
-		};
-	}, [searchInputValue, setSearchResult]);
+		if (response.data.response === 'success') {
+			setSearchError('');
+			setSearchResult(response.data.results);
+		} else if (response.data.response === 'error') {
+			setSearchError(response.data.error);
+			setSearchResult([]);
+		}
+	};
 
 	return (
-		<form>
-			<input placeholder="Search" onChange={(e) => setSearchInputValue(e.target.value)} />
-		</form>
+		<Form onSubmit={formik.handleSubmit}>
+			<InputGroup className="my-3" size="sm">
+				<Form.Control
+					required
+					id="search"
+					minLength="3"
+					name="search"
+					placeholder="Enter hero name..."
+					type="search"
+					value={formik.values.search}
+					onBlur={formik.handleBlur}
+					onChange={formik.handleChange}
+				/>
+				<Button type="submit" variant="primary">
+					Search
+				</Button>
+			</InputGroup>
+		</Form>
 	);
 };
 
