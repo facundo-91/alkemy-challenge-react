@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useFormik } from 'formik';
-import { Form, InputGroup, Button } from 'react-bootstrap';
+import { Form, InputGroup, Button, Container } from 'react-bootstrap';
 
 const Search = ({ setSearchResult, setSearchError }) => {
 	const formik = useFormik({
@@ -27,24 +27,26 @@ const Search = ({ setSearchResult, setSearchError }) => {
 	};
 
 	return (
-		<Form onSubmit={formik.handleSubmit}>
-			<InputGroup className="my-3" size="sm">
-				<Form.Control
-					required
-					id="search"
-					minLength="3"
-					name="search"
-					placeholder="Enter hero name..."
-					type="search"
-					value={formik.values.search}
-					onBlur={formik.handleBlur}
-					onChange={formik.handleChange}
-				/>
-				<Button type="submit" variant="primary">
-					Search
-				</Button>
-			</InputGroup>
-		</Form>
+		<Container className="my-4">
+			<Form onSubmit={formik.handleSubmit}>
+				<InputGroup className="mx-auto w-75">
+					<Form.Control
+						required
+						id="search"
+						minLength="3"
+						name="search"
+						placeholder="Enter hero name..."
+						type="search"
+						value={formik.values.search}
+						onBlur={formik.handleBlur}
+						onChange={formik.handleChange}
+					/>
+					<Button type="submit" variant="dark">
+						Search
+					</Button>
+				</InputGroup>
+			</Form>
+		</Container>
 	);
 };
 

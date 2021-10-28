@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 
 const TeamStats = ({ heroes }) => {
 	const [stats, setStats] = useState({
@@ -50,7 +51,6 @@ const TeamStats = ({ heroes }) => {
 				!isNaN(hero.powerstats.combat) ? total + parseInt(hero.powerstats.combat) : total,
 			0,
 		);
-
 		const averageHeight = teamArray
 			.reduce((total, hero) => total + parseInt(hero.appearance.height[1]) / teamArray.length, 0)
 			.toFixed(2);
@@ -91,18 +91,60 @@ const TeamStats = ({ heroes }) => {
 	}, [heroes]);
 
 	return (
-		<div>
-			<h4>Category: {teamCategory}</h4>
+		<Container className="my-4">
+			<h4 className="text-capitalize">Team Category: {teamCategory ? teamCategory : 'N/A'}</h4>
 			<h4>Team Stats:</h4>
-			<p>Intelligence: {stats.powerstats.intelligence}</p>
-			<p>Strength: {stats.powerstats.strength}</p>
-			<p>Speed: {stats.powerstats.speed}</p>
-			<p>Durability: {stats.powerstats.durability}</p>
-			<p>Power: {stats.powerstats.power}</p>
-			<p>Combat: {stats.powerstats.combat}</p>
-			<p>Avg. Height: {stats.averages.height} cm</p>
-			<p>Avg. Weight: {stats.averages.weight} Kg</p>
-		</div>
+			<Row className="text-center" md={6} xs={3}>
+				<Col className="my-2">
+					<div className="border">
+						<p className="fs-6 bg-dark text-white my-0">Intelligence</p>
+						<p className="fs-3 fw-bold my-0"> {stats.powerstats.intelligence}</p>
+					</div>
+				</Col>
+				<Col className="my-2">
+					<div className="border">
+						<p className="fs-6 bg-dark text-white my-0">Strength</p>
+						<p className="fs-3 fw-bold my-0">{stats.powerstats.strength}</p>
+					</div>
+				</Col>
+				<Col className="my-2">
+					<div className="border">
+						<p className="fs-6 bg-dark text-white my-0">Speed</p>
+						<p className="fs-3 fw-bold my-0">{stats.powerstats.speed}</p>
+					</div>
+				</Col>
+				<Col className="my-2">
+					<div className="border">
+						<p className="fs-6 bg-dark text-white my-0">Durability</p>
+						<p className="fs-3 fw-bold my-0">{stats.powerstats.durability}</p>
+					</div>
+				</Col>
+				<Col className="my-2">
+					<div className="border">
+						<p className="fs-6 bg-dark text-white my-0">Power</p>
+						<p className="fs-3 fw-bold my-0">{stats.powerstats.power}</p>
+					</div>
+				</Col>
+				<Col className="my-2">
+					<div className="border">
+						<p className="fs-6 bg-dark text-white my-0">Combat</p>
+						<p className="fs-3 fw-bold my-0">{stats.powerstats.combat}</p>
+					</div>
+				</Col>
+				<Col className="my-2">
+					<div className="border">
+						<p className="fs-6 bg-dark text-white my-0">Avg. Height</p>
+						<p className="fs-3 fw-bold my-0">{stats.averages.height} cm</p>
+					</div>
+				</Col>
+				<Col className="my-2">
+					<div className="border">
+						<p className="fs-6 bg-dark text-white my-0">Avg. Weight</p>
+						<p className="fs-3 fw-bold my-0">{stats.averages.weight} Kg</p>
+					</div>
+				</Col>
+			</Row>
+		</Container>
 	);
 };
 

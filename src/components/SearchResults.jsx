@@ -1,20 +1,23 @@
 import React from 'react';
+import { Container, Row } from 'react-bootstrap';
 import SearchResultCard from './SearchResultCard';
 
 const SearchResults = ({ heroes, setHeroes, searchError, searchResult }) => {
 	if (searchResult.length > 0) {
 		return (
-			<div>
+			<Container>
 				<h4>Results:</h4>
-				{searchResult.map((result) => (
-					<SearchResultCard
-						key={result.id}
-						heroInfo={result}
-						heroes={heroes}
-						setHeroes={setHeroes}
-					/>
-				))}
-			</div>
+				<Row md={6} xs={3}>
+					{searchResult.map((result) => (
+						<SearchResultCard
+							key={result.id}
+							heroInfo={result}
+							heroes={heroes}
+							setHeroes={setHeroes}
+						/>
+					))}
+				</Row>
+			</Container>
 		);
 	} else if (searchError.length > 0) {
 		return <div>{searchError}</div>;
