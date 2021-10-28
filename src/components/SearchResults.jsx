@@ -20,7 +20,11 @@ const SearchResults = ({ heroes, setHeroes, searchError, searchResult }) => {
 			</Container>
 		);
 	} else if (searchError.length > 0) {
-		return <div>{searchError}</div>;
+		return (
+			<Container className="alert alert-danger text-capitalize text-center" role="alert">
+				{searchError}
+			</Container>
+		);
 	} else return null;
 };
 
