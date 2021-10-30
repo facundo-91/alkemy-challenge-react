@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 
 import HeroesContainer from '../components/HeroesContainer';
 import SearchBar from '../components/SearchBar';
@@ -13,14 +14,22 @@ const Home = () => {
 	return (
 		<div className="app">
 			<SearchBar setSearchError={setSearchError} setSearchResult={setSearchResult} />
-			<TeamStats heroes={heroes} />
 			<SearchResults
 				heroes={heroes}
 				searchError={searchError}
 				searchResult={searchResult}
 				setHeroes={setHeroes}
 			/>
-			<HeroesContainer heroes={heroes} setHeroes={setHeroes} />
+			<Container>
+				<Row>
+					<Col lg={3} xs={12}>
+						<TeamStats heroes={heroes} />
+					</Col>
+					<Col lg={9} xs={12}>
+						<HeroesContainer heroes={heroes} setHeroes={setHeroes} />
+					</Col>
+				</Row>
+			</Container>
 		</div>
 	);
 };

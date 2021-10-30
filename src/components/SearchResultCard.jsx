@@ -89,7 +89,7 @@ const SearchResultCard = ({ heroInfo, heroes, setHeroes }) => {
 				<div
 					className="rounded-bottom bg-dark text-white text-center border border-dark"
 					style={{ padding: '.375rem .75rem' }}>
-					Add to Team
+					Add
 				</div>
 			</div>
 		</Col>
