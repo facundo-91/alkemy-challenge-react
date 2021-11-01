@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Col, Image, ProgressBar } from 'react-bootstrap';
+import { Button, Col, Image } from 'react-bootstrap';
 import HeroModal from './HeroModal';
 
 const HeroCard = ({ heroInfo, heroes, setHeroes }) => {

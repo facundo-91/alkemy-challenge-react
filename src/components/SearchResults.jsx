@@ -6,7 +6,7 @@ const SearchResults = ({ heroes, setHeroes, searchError, searchResult }) => {
 	if (searchResult.length > 0) {
 		return (
 			<Container>
-				<h4>Results:</h4>
+				<h4>Search results: ({searchResult.length} items)</h4>
 				<Row md={6} xs={3}>
 					{searchResult.map((result) => (
 						<SearchResultCard

@@ -23,11 +23,11 @@ const SearchResultCard = ({ heroInfo, heroes, setHeroes }) => {
 			) {
 				setHeroes(heroes.concat(heroInfo));
 			} else {
-				if (teamAlignments.goods === 3) window.alert('Too many goods heroes');
-				if (teamAlignments.bads === 3) window.alert('Too many bads heroes');
+				if (teamAlignments.goods === 3) window.alert('Too many good heroes!');
+				if (teamAlignments.bads === 3) window.alert('Too many bad heroes!');
 			}
 		} else {
-			window.alert('Team Completed');
+			window.alert('Team Completed!');
 		}
 	};
 
