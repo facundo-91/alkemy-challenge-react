@@ -15,7 +15,7 @@ const Login = ({ setIsAuthenticated }) => {
 			validationSchema={yupSchema}
 			onSubmit={(values, { setSubmitting, setFieldError }) => {
 				axios
-					.post('http://challenge-react.alkemy.org', {
+					.post('/auth/login', {
 						email: values.email,
 						password: values.password,
 					})

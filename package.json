@@ -2,6 +2,7 @@
 	"name": "alkemy-challenge-react",
 	"version": "0.0.0",
 	"scripts": {
+		"start": "cd backend && npm install && npm start",
 		"dev": "vite",
 		"build": "vite build",
 		"serve": "vite preview"

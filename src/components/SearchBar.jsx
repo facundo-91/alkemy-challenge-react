@@ -12,9 +12,7 @@ const Search = ({ setSearchResult, setSearchError }) => {
 
 	const handleSearch = async (input) => {
 		const trimmedInput = input.trim();
-		const request = axios.get(
-			`https://superheroapi.com/api/${import.meta.env.VITE_ACCESS_TOKEN}/search/${trimmedInput}`,
-		);
+		const request = axios.get(`/search/${trimmedInput}`);
 		const response = await request;
 
 		if (response.data.response === 'success') {
