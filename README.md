@@ -36,3 +36,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 - Axios
 - SuperHero API
 - React Router
+
+## Login Info
+```
+- Email: alkemy@challenge.org
+- Password: react
+```
