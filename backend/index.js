@@ -7,7 +7,7 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 8000;
 const LOGIN_URL = 'http://challenge-react.alkemy.org/';
-const SEARCH_URL = `https://superheroapi.com/api/${process.env.ACCESS_TOKEN}/search/`;
+const SEARCH_URL = `https://www.superheroapi.com/api/${process.env.ACCESS_TOKEN}/search/`;
 
 app.use(express.static(path.resolve(__dirname, '../dist')));
 app.use(express.json());
